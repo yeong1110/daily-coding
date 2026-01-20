@@ -1,0 +1,59 @@
+html,
+body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 48px;
+    background-color: var(--btn-bg);
+    overflow: hidden;
+    font-size: 2rem;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--btn-hover-bg);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.1s ease-out;
+    z-index: -1;
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+    transform: scaleX(1);
+}
+
+.btn:active,
+.btn:focus {
+    transform: scale(1.1);
+}
+
+.btn:focus-visible {
+    outline: 4px solid var(--btn-focus-outline);
+}
