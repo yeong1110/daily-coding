@@ -147,19 +147,25 @@ button {
         will-change: transform;
         transition: transform 0.5s ease;
     }
-    .card:has(+ *:hover) {
+    .card:has(+ .card:hover) {
         transform: scale(0.9);
     }
-    .card:has(+ * + *:hover) {
+    .card:has(+ .card + .card:hover) {
+        transform: scale(0.96);
+    }
+    .card:has(+ .card + .card + .card:hover) {
         transform: scale(0.98);
     }
     .card:hover {
         transform: scale(1.1);
     }
-    .card:hover + * {
+    .card:hover + .card {
         transform: scale(0.9);
     }
-    .card:hover + * + * {
+    .card:hover + .card + .card {
+        transform: scale(0.96);
+    }
+    .card:hover + .card + .card + .card {
         transform: scale(0.98);
     }
 }
