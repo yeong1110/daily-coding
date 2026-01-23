@@ -140,32 +140,35 @@ button {
 
 @media screen and (min-width: 980px) {
     .card-wrapper {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        perspective: 500px;
+				grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
     .card {
         aspect-ratio: 2 / 1;
+        will-change: transform, filter, box-shadow;
+        transition:
+            transform,
+            filter 0.5s ease,
+            box-shadow 0.3s ease-out 0.2s;
+        transform-style: preserve-3d;
+    }
+    .card-desc {
         will-change: transform;
         transition: transform 0.5s ease;
     }
-    .card:has(+ .card:hover) {
-        transform: scale(0.9);
-    }
-    .card:has(+ .card + .card:hover) {
-        transform: scale(0.96);
-    }
-    .card:has(+ .card + .card + .card:hover) {
-        transform: scale(0.98);
+    .card-wrapper:hover .card:not(:hover)::before {
+        filter: brightness(0.8);
+        transform: perspective(1000px) rotateY(10deg) scale3d(0.9, 1, 0.1);
+        box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
     }
     .card:hover {
-        transform: scale(1.1);
+        z-index: 1;
     }
-    .card:hover + .card {
-        transform: scale(0.9);
+    .card:hover::before {
+        transform: perspective(1000px) rotateY(-10deg) scale3d(0.8, 1, 0.1);
     }
-    .card:hover + .card + .card {
-        transform: scale(0.96);
-    }
-    .card:hover + .card + .card + .card {
-        transform: scale(0.98);
+    .card:hover .card-title,
+    .card:hover .card-desc {
+        transform: translate3d(-43px, 0, 10px);
     }
 }
