@@ -85,6 +85,18 @@ button {
     justify-content: flex-end;
     color: var(--card-text);
     overflow: hidden;
+    will-change: opacity, transform;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: appear 1s linear forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes appear {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card::before {
