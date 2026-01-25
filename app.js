@@ -13,3 +13,8 @@ btn.addEventListener('click', () => {
 	}
 	
 })
+
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, i) => {
+	card.style.setProperty('--delay', `${i * 0.1}s`);
+})
