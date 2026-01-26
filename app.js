@@ -1,4 +1,4 @@
-const btn = document.querySelector('.btn');
+const btn = document.querySelector('.btn-submit');
 
 btn.addEventListener('click', () => {
 	let userName = prompt('사용자명을 입력해주세요');
@@ -18,4 +18,12 @@ btn.addEventListener('click', () => {
 const cards = document.querySelectorAll('.card');
 cards.forEach((card, i) => {
 	card.style.setProperty('--delay', `${i * 0.1}s`);
+})
+
+const themeToggle = document.querySelector('.theme-toggle');
+
+themeToggle.addEventListener('click', () => {
+	const currentScheme = document.documentElement.dataset.colorScheme;
+	const newScheme = currentScheme === 'light' ? 'dark' : 'light';
+	document.documentElement.dataset.colorScheme = newScheme;
 })

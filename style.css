@@ -1,3 +1,10 @@
+html[data-color-scheme="light"] {
+    color-scheme: light;
+}
+html[data-color-scheme="dark"] {
+    color-scheme: dark;
+}
+
 html,
 body {
     width: 100%;
@@ -6,12 +13,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--bg);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 1rem;
 }
 
 button {
@@ -140,12 +153,14 @@ button {
         opacity: 0;
         transition: opacity 0.3s ease 0.2s;
     }
-    .card:hover .card-title {
+    .card:hover .card-title,
+    .card:focus-visible .card-title {
         opacity: 1;
         transform: none;
     }
 
-    .card:hover .card-desc {
+    .card:hover .card-desc,
+    .card:focus-visible .card-desc {
         opacity: 1;
     }
 }
@@ -166,6 +181,9 @@ button {
             filter 0.5s ease,
             box-shadow 0.3s ease-out 0.2s;
     }
+    .card:focus-visible {
+        outline: 4px solid var(--btn-focus-outline);
+    }
     .card-desc {
         will-change: transform;
         transition: transform 0.5s ease;
@@ -184,5 +202,22 @@ button {
     .card:hover .card-title,
     .card:hover .card-desc {
         transform: translate3d(-43px, 0, 10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transform: none;
+    }
+    .btn::before {
+        content: none;
+    }
+    .card {
+        animation: none;
+    }
+    .card-title,
+    .card-desc {
+        opacity: 1;
+        transform: none;
     }
 }

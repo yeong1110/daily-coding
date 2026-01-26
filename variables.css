@@ -1,7 +1,29 @@
 :root {
-	--btn-bg: #fcc9c9;
-	--btn-hover-bg: #ffe8e7;
-	--btn-focus-outline: #fd6b6b;
+    color-scheme: light dark;
+    --bg-light: #fff;
+    --btn-bg-light: #fcc9c9;
+    --btn-hover-bg-light: #ffe8e7;
+    --btn-focus-outline-light: #fd6b6b;
 
-	--card-text: #fff;
+    --bg-dark: #4d4848;
+    --btn-bg-dark: #c79f9f;
+    --btn-hover-bg-dark: rgb(204, 188, 187);
+    --btn-focus-outline-dark: #ffa365;
+
+    --card-text-light: #fff;
+    --card-text-dark: #dddddd;
+
+    --bg: var(--bg-light);
+    --btn-bg: var(--btn-bg-light);
+    --btn-hover-bg: var(--btn-hover-bg-light);
+    --btn-focus-outline: var(--btn-focus-outline-light);
+    --card-text: var(--card-text-light);
+}
+
+html[data-color-scheme="dark"] {
+    --bg: var(--bg-dark);
+    --btn-bg: var(--btn-bg-dark);
+    --btn-hover-bg: var(--btn-hover-bg-dark);
+    --btn-focus-outline: var(--btn-focus-outline-dark);
+    --card-text: var(--card-text-dark);
 }
