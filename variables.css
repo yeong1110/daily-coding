@@ -1,7 +1,22 @@
 :root {
-	--btn-bg: #fcc9c9;
-	--btn-hover-bg: #ffe8e7;
-	--btn-focus-outline: #fd6b6b;
+	color-scheme: light dark;
+	--bg-light: #fff;
+	--btn-bg-light: #fcc9c9;
+	--btn-hover-bg-light: #ffe8e7;
+	--btn-focus-outline-light: #fd6b6b;
+	
+	--bg-dark: #4d4848;
+	--btn-bg-dark: #c79f9f;
+	--btn-hover-bg-dark: rgb(204, 188, 187);
+	--btn-focus-outline-dark: #ffa365;
 
-	--card-text: #fff;
+	--card-text-light: #fff;
+	--card-text-dark: #dddddd;
+
+	--bg: light-dark(var(--bg-light),var(--bg-dark));
+	--btn-bg: light-dark(var(--btn-bg-light),var(--btn-bg-dark));
+	--btn-hover-bg: light-dark(var(--btn-hover-bg-light),var(--btn-hover-bg-dark));
+	--btn-focus-outline: light-dark(var(--btn-focus-outline-light),var(--btn-focus-outline-dark));
+	--card-text: light-dark(var(--card-text-light),var(--card-text-dark));
+
 }
