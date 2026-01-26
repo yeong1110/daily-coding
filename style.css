@@ -160,7 +160,7 @@ button {
     }
 
     .card:hover .card-desc,
-		.card:focus-visible .card-desc {
+    .card:focus-visible .card-desc {
         opacity: 1;
     }
 }
@@ -209,12 +209,12 @@ button {
     .btn {
         transform: none;
     }
-		.btn::before {
-			content: none;
-		}
-		.card {
-			animation: none;
-		}
+    .btn::before {
+        content: none;
+    }
+    .card {
+        animation: none;
+    }
     .card-title,
     .card-desc {
         opacity: 1;

@@ -21,14 +21,9 @@ cards.forEach((card, i) => {
 })
 
 const themeToggle = document.querySelector('.theme-toggle');
-let themeState = false;
 
 themeToggle.addEventListener('click', () => {
-	// themeState = true;
-	themeState? setColorScheme('dark') : setColorScheme('light');
+	const currentScheme = document.documentElement.dataset.colorScheme;
+	const newScheme = currentScheme === 'light' ? 'dark' : 'light';
+	document.documentElement.dataset.colorScheme = newScheme;
 })
-
-function setColorScheme(mode) {
-  document.documentElement.dataset.colorScheme = mode;
-	themeState = !themeState;
-}
