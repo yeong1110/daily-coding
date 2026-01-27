@@ -84,7 +84,14 @@ button {
     margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    will-change: grid-template-columns;
+    transition: grid-template-columns 0.3s ease;
+		contain: layout;
     gap: 1rem;
+}
+
+.card-wrapper.grid4 {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .card {
@@ -98,14 +105,19 @@ button {
     justify-content: flex-end;
     color: var(--card-text);
     overflow: hidden;
+		opacity: 0;
     will-change: opacity, transform;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: appear 1s linear forwards;
-    animation-delay: var(--delay);
+	}
+	
+	.appear {
+		animation: appear 1s linear forwards;
+		animation-delay: var(--delay);
 }
 
 @keyframes appear {
+    0% {
+        transform: translateY(10px);
+    }
     100% {
         opacity: 1;
         transform: translateY(0);
