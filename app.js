@@ -16,8 +16,12 @@ btn.addEventListener('click', () => {
 })
 
 const cards = document.querySelectorAll('.card');
-cards.forEach((card, i) => {
+const setAppear = (card, i) => {
+	card.classList.add('appear');
 	card.style.setProperty('--delay', `${i * 0.1}s`);
+}
+cards.forEach((card, i) => {
+	setAppear(card, i);
 })
 
 const themeToggle = document.querySelector('.theme-toggle');
@@ -26,4 +30,20 @@ themeToggle.addEventListener('click', () => {
 	const currentScheme = document.documentElement.dataset.colorScheme;
 	const newScheme = currentScheme === 'light' ? 'dark' : 'light';
 	document.documentElement.dataset.colorScheme = newScheme;
+})
+
+const gridChangeBtn = document.querySelector('.grid4');
+const cardWrapper = document.querySelector('.card-wrapper');
+gridChangeBtn.addEventListener('click', () => {
+	const btnText = cardWrapper.classList.contains('grid4')? '4줄씩 보기' : '원래대로';
+	gridChangeBtn.textContent = btnText;
+	cards.forEach(card => {
+		card.classList.remove('appear');
+	})
+	cardWrapper.classList.toggle('grid4');
+	requestAnimationFrame(() => {
+		cards.forEach((card, i) => {
+			setAppear(card, i);
+		})
+	})
 })
