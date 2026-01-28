@@ -20,9 +20,6 @@ const setAppear = (card, i) => {
 	card.classList.add('appear');
 	card.style.setProperty('--delay', `${i * 0.1}s`);
 }
-cards.forEach((card, i) => {
-	setAppear(card, i);
-})
 
 const themeToggle = document.querySelector('.theme-toggle');
 
@@ -47,3 +44,16 @@ gridChangeBtn.addEventListener('click', () => {
 		})
 	})
 })
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("appear");
+			observer.unobserve(entry.target);
+    }
+  });
+});
+
+cards.forEach((el) => {
+  observer.observe(el);
+});
