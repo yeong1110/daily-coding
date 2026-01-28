@@ -45,10 +45,11 @@ gridChangeBtn.addEventListener('click', () => {
 	})
 })
 
-const observer = new IntersectionObserver((e) => {
-  e.forEach((el) => {
-    if (el.isIntersecting) {
-      el.target.classList.add("appear");
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("appear");
+			observer.unobserve(entry.target);
     }
   });
 });

@@ -108,7 +108,7 @@ button {
     opacity: 0;
     will-change: opacity, transform;
     content-visibility: auto;
-    contain-intrinsic-size: auto 500px;
+    contain-intrinsic-size: auto 100px;
     transition-behavior: allow-discrete;
     contain: layout size style;
 }
