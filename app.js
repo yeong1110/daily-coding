@@ -45,14 +45,21 @@ gridChangeBtn.addEventListener('click', () => {
 	})
 })
 
+const options = {
+	threshold: [0.5]
+};
+
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
+		const ratio = entry.intersectionRatio;
+		const rotete = Math.round(ratio * 360);
     if (entry.isIntersecting) {
+			entry.target.style.setProperty('--rotateX', `${rotete}deg`);
       entry.target.classList.add("appear");
 			observer.unobserve(entry.target);
     }
   });
-});
+}, options);
 
 cards.forEach((el) => {
   observer.observe(el);
