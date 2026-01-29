@@ -190,6 +190,20 @@ button {
         aspect-ratio: 2 / 1;
         transform-style: preserve-3d;
     }
+    .card.appear {
+        content-visibility: visible;
+        animation: rotateX 1s linear forwards;
+        animation-delay: var(--delay);
+    }
+    @keyframes rotateX {
+        0% {
+            transform: rotateX(var(--rotateX));
+        }
+        100% {
+            opacity: 1;
+            transform: rotateX(0);
+        }
+    }
     .card::before {
         will-change: transform, filter, box-shadow;
         transition:
