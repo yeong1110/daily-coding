@@ -52,9 +52,9 @@ const options = {
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
 		const ratio = entry.intersectionRatio;
-		const rotete = Math.round(ratio * 360);
+		const rotate = Math.round(ratio * 360);
     if (entry.isIntersecting) {
-			entry.target.style.setProperty('--rotateX', `${rotete}deg`);
+			entry.target.style.setProperty('--rotateX', `${rotate}deg`);
       entry.target.classList.add("appear");
 			observer.unobserve(entry.target);
     }
