@@ -16,11 +16,6 @@ body {
     background-color: var(--bg);
 }
 
-body {
-    scroll-timeline: --my-timeline y;
-    scroll-timeline: --my-timeline vertical;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -277,11 +272,6 @@ button {
     transform: translateY(-4px);
 }
 
-.card-css .card-desc {
-    opacity: 1;
-    transform: none;
-}
-
 @supports (animation-timeline: view()) {
     .card-css {
         animation: appear-card 1ms linear;
@@ -331,11 +321,11 @@ button {
 @keyframes appear-card-title {
     0% {
         opacity: 0;
-				transform: translateY(-5px);
-			}
-			100% {
-				opacity: 1;
-				transform: none;
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
     }
 }
 
