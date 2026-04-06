@@ -15,12 +15,29 @@ body {
     justify-content: center;
     background-color: var(--bg);
 }
+body {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 680px) {
+    body {
+        font-size: 14px;
+    }
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* title */
+h1 {
+    margin-top: 80px;
+    margin-bottom: 24px;
+}
+
+/* button */
 
 .button-wrapper {
     display: flex;
@@ -47,9 +64,15 @@ button {
     border-radius: 48px;
     background-color: var(--btn-bg);
     overflow: hidden;
-    font-size: 2rem;
+    font-size: 1em;
     transition: transform 0.5s ease;
     will-change: transform;
+}
+@media screen and (max-width: 680px) {
+    .btn {
+        padding: 8px 10px;
+        border-radius: 12px;
+    }
 }
 
 .btn::before {
@@ -79,6 +102,8 @@ button {
 /* card */
 
 .card-wrapper {
+    container-type: inline-size;
+    container-name: card;
     padding: 0 100px;
     width: 100%;
     margin-top: 24px;
@@ -142,7 +167,7 @@ button {
 }
 
 .card-title {
-    font-size: 2rem;
+    font-size: 1.5em;
     font-weight: 500;
     will-change: opacity, transform;
 }
@@ -157,8 +182,18 @@ button {
 
 @media screen and (min-width: 680px) {
     .card-wrapper {
-        padding: 0 48px;
+        padding: 0 48px 24px;
     }
+}
+
+@media screen and (min-width: 980px) {
+    .card-wrapper {
+        perspective: 500px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+@container card (min-width: 680px) {
     .card-title {
         opacity: 0;
         transform: translateY(10px);
@@ -182,18 +217,14 @@ button {
     }
 }
 
-@media screen and (min-width: 980px) {
-    .card-wrapper {
-        perspective: 500px;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
+@container card (min-width: 980px) {
     .card {
         aspect-ratio: 2 / 1;
         transform-style: preserve-3d;
     }
     .card.appear {
         content-visibility: visible;
-        animation: rotateX 1s linear forwards;
+        animation: appear-card 1s linear forwards;
         animation-delay: var(--delay);
     }
     @keyframes rotateX {
@@ -209,7 +240,6 @@ button {
         will-change: transform, filter, box-shadow;
         transition:
             transform 0.5s ease,
-            filter 0.5s ease,
             box-shadow 0.3s ease-out 0.2s;
     }
     .card:focus-visible {
@@ -218,11 +248,6 @@ button {
     .card-desc {
         will-change: transform;
         transition: transform 0.5s ease;
-    }
-    .card-wrapper:hover .card:not(:hover)::before {
-        filter: brightness(0.8);
-        transform: rotateY(10deg) scale3d(0.9, 1, 0.1);
-        box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
     }
     .card:hover {
         z-index: 1;
@@ -241,6 +266,7 @@ button {
     width: 100%;
     aspect-ratio: 2 / 1;
     padding: 24px;
+    gap: 0.5em;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -284,7 +310,7 @@ button {
         animation-range: entry cover 25%;
     }
     .card-css .card-desc {
-        animation: appear-card-title 1ms linear;
+        animation: appear-card-title 1ms linear forwards;
         animation-timeline: --card-timeline;
         animation-range: entry cover 50%;
     }
