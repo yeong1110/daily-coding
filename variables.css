@@ -9,10 +9,14 @@
     --btn-bg-dark: #c79f9f;
     --btn-hover-bg-dark: rgb(204, 188, 187);
     --btn-focus-outline-dark: #ffa365;
+    
+    --text-light: #111;
+    --text-dark: #eee;
 
     --card-text-light: #fff;
     --card-text-dark: #dddddd;
 
+    --text: var(var(--text-light));
     --bg: var(--bg-light);
     --btn-bg: var(--btn-bg-light);
     --btn-hover-bg: var(--btn-hover-bg-light);
@@ -26,4 +30,15 @@ html[data-color-scheme="dark"] {
     --btn-hover-bg: var(--btn-hover-bg-dark);
     --btn-focus-outline: var(--btn-focus-outline-dark);
     --card-text: var(--card-text-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --text: var(--text-dark);
+        --bg: var(--bg-dark);
+        --btn-bg: var(--btn-bg-dark);
+        --btn-hover-bg: var(--btn-hover-bg-dark);
+        --btn-focus-outline: var(--btn-focus-outline-dark);
+        --card-text: var(--card-text-dark);
+    }
 }
