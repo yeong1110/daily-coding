@@ -33,7 +33,7 @@ html[data-color-scheme="dark"] {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
+    :root {
         --text: var(--text-dark);
         --bg: var(--bg-dark);
         --btn-bg: var(--btn-bg-dark);
