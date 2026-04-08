@@ -16,7 +16,7 @@
     --card-text-light: #fff;
     --card-text-dark: #dddddd;
 
-    --text: var(var(--text-light));
+    --text: var(--text-light);
     --bg: var(--bg-light);
     --btn-bg: var(--btn-bg-light);
     --btn-hover-bg: var(--btn-hover-bg-light);
