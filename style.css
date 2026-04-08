@@ -14,6 +14,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: var(--bg);
+    color: var(--text);
 }
 body {
     font-size: 16px;
@@ -102,8 +103,6 @@ button {
 /* card */
 
 .card-wrapper {
-    container-type: inline-size;
-    container-name: card;
     padding: 0 100px;
     width: 100%;
     margin-top: 24px;
@@ -180,6 +179,10 @@ button {
     transform: scale(1.1);
 }
 
+.card:focus-visible {
+    outline: 4px solid var(--btn-focus-outline);
+}
+
 @media screen and (min-width: 680px) {
     .card-wrapper {
         padding: 0 48px 24px;
@@ -193,71 +196,91 @@ button {
     }
 }
 
-@container card (min-width: 680px) {
-    .card-title {
-        opacity: 0;
-        transform: translateY(10px);
-        transition:
-            opacity 0.3s ease,
-            transform 0.3s ease-in-out 0.1s;
+@supports (container-type: inline-size) {
+    .card-wrapper {
+        container-type: inline-size;
+        container-name: card;
     }
-    .card-desc {
-        opacity: 0;
-        transition: opacity 0.3s ease 0.2s;
+    @container card (min-width: 680px) {
+        .card-title {
+            opacity: 0;
+            transform: translateY(10px);
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease-in-out 0.1s;
+        }
+        .card-desc {
+            opacity: 0;
+            transition: opacity 0.3s ease 0.2s;
+        }
+        .card:hover .card-title,
+        .card:focus-visible .card-title {
+            opacity: 1;
+            transform: none;
+        }
+    
+        .card:hover .card-desc,
+        .card:focus-visible .card-desc {
+            opacity: 1;
+        }
     }
-    .card:hover .card-title,
-    .card:focus-visible .card-title {
-        opacity: 1;
-        transform: none;
-    }
-
-    .card:hover .card-desc,
-    .card:focus-visible .card-desc {
-        opacity: 1;
+    
+    @container card (min-width: 980px) {
+        .card {
+            aspect-ratio: 2 / 1;
+            transform-style: preserve-3d;
+        }
+        .card.appear {
+            content-visibility: visible;
+            animation: appear-card 1s linear forwards;
+            animation-delay: var(--delay);
+        }
+        .card::before {
+            will-change: transform, filter, box-shadow;
+            transition:
+                transform 0.5s ease,
+                box-shadow 0.3s ease-out 0.2s;
+        }
+        .card-desc {
+            will-change: transform;
+            transition: transform 0.5s ease;
+        }
+        .card:hover {
+            z-index: 1;
+        }
+        .card:hover::before {
+            transform: rotateY(-10deg) scale3d(0.8, 1, 0.1);
+        }
+        .card:hover .card-title,
+        .card:hover .card-desc {
+            transform: translate3d(-43px, 0, 10px);
+        }
     }
 }
 
-@container card (min-width: 980px) {
-    .card {
-        aspect-ratio: 2 / 1;
-        transform-style: preserve-3d;
-    }
-    .card.appear {
-        content-visibility: visible;
-        animation: appear-card 1s linear forwards;
-        animation-delay: var(--delay);
-    }
-    @keyframes rotateX {
-        0% {
-            transform: rotateX(var(--rotateX));
-        }
-        100% {
+@supports not (container-type: inline-size) {
+
+    @media screen and (min-width: 680px) {
+        .card-title {
             opacity: 1;
-            transform: rotateX(0);
+            transform: none;
+        }
+        .card-desc {
+            opacity: 1;
         }
     }
-    .card::before {
-        will-change: transform, filter, box-shadow;
-        transition:
-            transform 0.5s ease,
-            box-shadow 0.3s ease-out 0.2s;
-    }
-    .card:focus-visible {
-        outline: 4px solid var(--btn-focus-outline);
-    }
-    .card-desc {
-        will-change: transform;
-        transition: transform 0.5s ease;
-    }
-    .card:hover {
-        z-index: 1;
-    }
-    .card:hover::before {
-        transform: rotateY(-10deg) scale3d(0.8, 1, 0.1);
-    }
-    .card:hover .card-title,
-    .card:hover .card-desc {
-        transform: translate3d(-43px, 0, 10px);
+    
+    @media screen and (min-width: 980px) {
+        .card {
+            aspect-ratio: 2 / 1;
+        }
+        .card.appear {
+            animation: appear-card 1s linear forwards;
+            animation-delay: var(--delay);
+        }
+        .card:hover {
+            z-index: 1;
+        }
     }
 }
 
@@ -352,6 +375,16 @@ button {
     100% {
         opacity: 1;
         transform: none;
+    }
+}
+
+@keyframes rotateX {
+    0% {
+        transform: rotateX(var(--rotateX));
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0);
     }
 }
 
